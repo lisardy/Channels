@@ -1,26 +1,31 @@
-PARAMETERS_FILE = "parameters.txt"
-CHANNELS_FILE = "channels.txt"
+PARAMETERS_FILE = "data/parameters.txt"
 
 
 class Values():
-    X_values = None
     m_value = None
     c_value = None
 
     def __init__(self):
-        _load_values()
-
-    def _load_values(self):
-        pass
+        self._load_parameters()
 
     def _load_parameters(self):
-        pass
+        file = None
 
-    def _load_channels(self):
-        pass
+        try:
+            with open(PARAMETERS_FILE, "r") as file:
+                pass
+                for line in file:
+                    split_values = line.split(", ")
 
-    def get_X_values(self):
-        return self.X_values
+                    if len(split_values) > 1:
+                        if split_values[0] == "m":
+                            self.m_value = float(split_values[1])
+
+                        if split_values[0] == "c":
+                            self.c_value = float(split_values[1])
+        finally:
+            if file:
+                file.close()
 
     def get_m(self):
         return self.m_value
