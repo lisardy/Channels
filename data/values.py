@@ -13,7 +13,6 @@ class Values():
 
         try:
             with open(PARAMETERS_FILE, "r") as file:
-                pass
                 for line in file:
                     split_values = line.split(", ")
 
@@ -26,6 +25,8 @@ class Values():
         finally:
             if file:
                 file.close()
+
+        print("c:{} m:{}".format(self.c_value, self.m_value))
 
     def get_m(self):
         return self.m_value
